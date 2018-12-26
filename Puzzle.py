@@ -3,10 +3,10 @@ from helpers import find_blank_puzzle_pos
 
 
 class Puzzle:
-    def __init__(self, n, state):
+    def __init__(self, n, state, empty_cell=None):
         self.size = n
-        self.state = deepcopy(state)
-        self.empty_cell = find_blank_puzzle_pos(state)
+        self.state = [row[:] for row in state]
+        self.empty_cell = find_blank_puzzle_pos(state) if empty_cell is None else empty_cell
 
     def __str__(self):
         el_len = len(str(max([el for row in self.state for el in row], key=lambda x: len(str(x)) if x is not None else 0)))
@@ -52,12 +52,12 @@ class Puzzle:
     def __hash__(self):
         return hash(tuple(tuple(row) for row in self.state))
 
-    def cmp_state(self, other):
+    def __eq__(self, other):
         for i in range(self.size):
             for j in range(self.size):
                 if self.state[i][j] != other.state[i][j]:
                     return False
         return True
 
-    def __eq__(self, other):
-        return self.size == other.size and self.cmp_state(other)
+    def __lt__(self, other):
+        return True

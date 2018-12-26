@@ -16,7 +16,7 @@ class Vis(object):
         self._n = len(self._cur)
         self._solution = solution
 
-        self._speed = 10  # pixels per frame
+        self._speed = 5  # pixels per frame
         self._is_moving = False
         self._finished = False
         self._cur_move = ''
