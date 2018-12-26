@@ -15,7 +15,7 @@ def parse_puzzle(filename):
 
         # parse puzzle_size
         if puzzle_size is None and words:
-            if len(words) > 1 or not words[0].isdigit():
+            if len(words) > 1 or not words[0].isdigit() or int(words[0]) <= 1:
                 raise Exception("Shitty puzzle size")
             puzzle_size = int(words[0])
         # parse puzzle row

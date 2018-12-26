@@ -30,8 +30,8 @@ def is_solvable(start_puzzle, end_state):
     else:
         i1, j1 = find_blank_puzzle_pos(start_puzzle.state)
         i2, j2 = find_blank_puzzle_pos(end_state.state)
-        if ((start_inv % 2 == end_inv % 2 and (i1 + j1) % 2 == (i2 + j2) % 2) or
-            (start_inv % 2 != end_inv % 2 and (i1 + j1) % 2 != (i2 + j2) % 2)):
+        if ((start_inv % 2 == end_inv % 2 and i1 % 2 == i2 % 2) or
+            (start_inv % 2 != end_inv % 2 and i1 % 2 != i2 % 2)):
             return True
         else:
             return False

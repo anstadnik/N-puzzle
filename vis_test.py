@@ -1,4 +1,6 @@
 from Vis import Vis
+
+
 def_beg = [[1, 2,   3],
            [4, 5,   6],
            [7, 8,   'X']]
