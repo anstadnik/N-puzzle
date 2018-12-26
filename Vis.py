@@ -1,4 +1,3 @@
-from helpers import def_beg, def_end
 import pygame as pg
 from Tile import Tile
 

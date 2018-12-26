@@ -1,4 +1,11 @@
 from Vis import Vis
+def_beg = [[1, 2,   3],
+           [4, 5,   6],
+           [7, 8,   'X']]
+
+def_end = [[1, 2,   3],
+           [8, 'X', 4],
+           [7, 6,   5]]
 
 if __name__ == "__main__":
     # __import__('ipdb').set_trace()
