@@ -44,10 +44,14 @@ class Puzzle:
             self.empty_cell[0] -= 1
         elif move == 'u':
             self.state[i][j] = self.state[i + 1][j]
+            self.state[i+1][j] = None
             self.empty_cell[0] += 1
 
         # TODO remove
         assert 0<=self.empty_cell[0]<self.size and 0<=self.empty_cell[1]<self.size, "Out of bounds"
+
+    def copy(self):
+        return Puzzle(self.size, [row[:] for row in self.state], self.empty_cell[:])
 
     def __hash__(self):
         return hash(tuple(tuple(row) for row in self.state))
