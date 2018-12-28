@@ -83,7 +83,7 @@ class Solver:
             for j in range(end_puzzle.size):
                 self.end_puzzle_table[end_puzzle.state[i][j]] = (i, j)
 
-    def solve(self, heuristic, q):
+    def solve(self, heuristic, q=2):  #TODO remove queue1
 
         visited = set([self.start_puzzle])
 

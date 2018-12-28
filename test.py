@@ -4,13 +4,14 @@ from solvability import count_inverses, is_solvable
 from parser import parse_puzzle
 from solvability import is_solvable
 from puzzle_generators import generate_snail_form
+from heuristics import *
 from copy import deepcopy
 from Solver import *
 from Vis import Vis
 
 seed(7)
 solv = True
-n = 3
+n = 4
 w = len(str(n * n))
 
 def solve_bfs(start_state, end_puzzle):
@@ -67,7 +68,7 @@ def gen_puzzle(n, solv=True, iterations=10000):
 heuristic = manhattan_heuristic
 
 for i in range(1000):
-    puzzle = gen_puzzle(n, iterations=1000)
+    puzzle = gen_puzzle(n, iterations=100)
     end_puzzle = generate_snail_form(n)
     solver = Solver(puzzle, end_puzzle)
     moves, a, b = solver.solve(heuristic, q=2)
