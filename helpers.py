@@ -1,7 +1,6 @@
-def_beg = [[1, 2,   3],
-           [4, 5,   6],
-           [7, 8,   'X']]
-
-def_end = [[1, 2,   3],
-           [8, 'X', 4],
-           [7, 6,   5]]
+def find_blank_puzzle_pos(puzzle):
+    n = len(puzzle)
+    for i in range(n):
+        for j in range(n):
+            if puzzle[i][j] is None:
+                return [i, j]

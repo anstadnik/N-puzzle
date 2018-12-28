@@ -1,18 +1,11 @@
 from copy import deepcopy
-
-
-def find_blank_puzzle_pos(puzzle):
-    n = len(puzzle)
-    for i in range(n):
-        for j in range(n):
-            if puzzle[i][j] is None:
-                return [i, j]
+from helpers import find_blank_puzzle_pos
 
 
 class Puzzle:
     def __init__(self, n, state):
         self.size = n
-        self.state = tuple(tuple(row) for row in state)
+        self.state = deepcopy(state)
         self.empty_cell = find_blank_puzzle_pos(state)
 
     def __str__(self):
@@ -54,7 +47,17 @@ class Puzzle:
             self.empty_cell[0] += 1
 
         # TODO remove
-        assert 0<self.empty_cell[0]<self.size and 0<self.empty_cell[1]<self.size, "Out of bounds"
+        assert 0<=self.empty_cell[0]<self.size and 0<=self.empty_cell[1]<self.size, "Out of bounds"
 
     def __hash__(self):
-        return hash(self.state)
+        return hash(tuple(tuple(row) for row in self.state))
+
+    def cmp_state(self, other):
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.state[i][j] != other.state[i][j]:
+                    return False
+        return True
+
+    def __eq__(self, other):
+        return self.size == other.size and self.cmp_state(other)
